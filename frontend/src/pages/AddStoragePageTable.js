@@ -27,7 +27,7 @@ export const AddStoragePageTable = () => {
         } else {
             alert(`Problem adding item. Response status = ${response.status}`);
         }
-        redirect("https://nicklaustrup-cs290-project.onrender.com/storage");
+        redirect("/storage");
     };
 
 
