@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import StorageList from '../components/StorageList';
 
 function StoragePage({ setProperty }) {
-    const backend = process.env.BACKEND;
     // Use the Navigate for redirection
     const redirect = useNavigate();
 
@@ -13,8 +12,7 @@ function StoragePage({ setProperty }) {
 
     // RETRIEVE the entire list of properties
     const loadProperties = async () => {
-        console.log('Backend URL:', backend);
-        const response = await fetch(`${backend}/properties`);
+        const response = await fetch('https://nicklaustrup-cs290-portfolio.onrender.com/properties');
         const properties = await response.json();
         setProperties(properties);
     } 
@@ -23,15 +21,15 @@ function StoragePage({ setProperty }) {
     // UPDATE a single property
     const onEditProperty = async property => {
         setProperty(property);
-        redirect("/update");
+        redirect("'https://nicklaustrup-cs290-project.onrender.com/update");
     }
 
 
     // DELETE a single property 
     const onDeleteProperty = async _id => {
-        const response = await fetch(`${backend}/properties/${_id}`, { method: 'DELETE' });
+        const response = await fetch(`https://nicklaustrup-cs290-portfolio.onrender.com/properties/${_id}`, { method: 'DELETE' });
         if (response.status === 200) {
-            const getResponse = await fetch(`${backend}/properties`);
+            const getResponse = await fetch('https://nicklaustrup-cs290-portfolio.onrender.com/properties/');
             const properties = await getResponse.json();
             setProperties(properties);
         } else {

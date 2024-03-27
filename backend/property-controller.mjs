@@ -9,17 +9,15 @@ import { createTestAccount, createTransport, getTestMessageUrl } from 'nodemaile
 
 const PORT = process.env.PORT;
 const app = express();
-const FRONTEND = process.env.FRONTEND;
-const BACKEND = process.env.BACKEND;
 app.use(cors({
-    origin: `${FRONTEND}`,
+    origin: "https://nicklaustrup-cs290-project.onrender.com",
     optionsSuccessStatus: 200
 }));
 app.use(express.json());  // REST needs JSON MIME type.
 
 
 // CREATE controller ******************************************
-app.post(`${BACKEND}/properties`, (req, res) => {
+app.post('https://nicklaustrup-cs290-portfolio.onrender.com/properties', (req, res) => {
     properties.createProperty(
         req.body.item,
         req.body.quantity,
@@ -38,8 +36,7 @@ app.post(`${BACKEND}/properties`, (req, res) => {
 
 
 // RETRIEVE controller ****************************************************
-app.get(`${BACKEND}/properties`, (req, res) => {
-    console.log('Backend URL:', BACKEND);
+app.get('https://nicklaustrup-cs290-portfolio.onrender.com/properties', (req, res) => {
     properties.retrieveProperties()
         .then(properties => {
             if (properties !== null) {
@@ -57,7 +54,7 @@ app.get(`${BACKEND}/properties`, (req, res) => {
 
 
 // RETRIEVE by ID controller
-app.get(`${BACKEND}/properties/:_id`, (req, res) => {
+app.get('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', (req, res) => {
     properties.retrievePropertyByID(req.params._id)
         .then(property => {
             if (property !== null) {
@@ -76,7 +73,7 @@ app.get(`${BACKEND}/properties/:_id`, (req, res) => {
 
 
 // UPDATE controller ************************************
-app.put(`${BACKEND}/properties/:_id`, (req, res) => {
+app.put('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', (req, res) => {
     properties.updateProperty(
         req.params._id,
         req.body.item,
@@ -96,7 +93,7 @@ app.put(`${BACKEND}/properties/:_id`, (req, res) => {
 
 
 // DELETE Controller ******************************
-app.delete(`${BACKEND}/properties/:_id`, (req, res) => {
+app.delete('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', (req, res) => {
     properties.deletePropertyById(req.params._id)
         .then(deletedCount => {
             if (deletedCount === 1) {
@@ -115,7 +112,7 @@ app.delete(`${BACKEND}/properties/:_id`, (req, res) => {
 
 // MAIL CONTROLLER -----------------------------|
 // Generate SMTP service account from ethereal.email
-app.post(`${BACKEND}/contact`, (req, res) => {
+app.post('https://nicklaustrup-cs290-portfolio.onrender.com/contact', (req, res) => {
     let name = req.body.name;
     let email = req.body.email;
     let source = req.body.source;

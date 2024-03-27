@@ -10,13 +10,11 @@ export const EditPropertyPageTable = ({ propertyToEdit }) => {
     const [quantity, setQuantity]    = useState(propertyToEdit.quantity);
     const [depositDate, setDate]     = useState(propertyToEdit.depositDate);
     const [category, setCategory]    = useState(propertyToEdit.category);
-
-    const backend = process.env.BACKEND;
     
     const redirect = useNavigate();
 
     const editProperty = async () => {
-        const response = await fetch(`${backend}/properties/${propertyToEdit._id}`, {
+        const response = await fetch(`https://nicklaustrup-cs290-portfolio.onrender.com/properties/${propertyToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify({ 
                 item       : item, 

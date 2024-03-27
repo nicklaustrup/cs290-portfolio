@@ -15,7 +15,7 @@ export const AddStoragePageTable = () => {
 
     const addProperty = async () => {
         const newProperty = { item, quantity, depositDate, category };
-        const response = await fetch(`${process.env.HOST}/properties`, {
+        const response = await fetch('https://nicklaustrup-cs290-portfolio.onrender.com/properties', {
             method: 'post',
             body: JSON.stringify(newProperty),
             headers: {
@@ -27,7 +27,7 @@ export const AddStoragePageTable = () => {
         } else {
             alert(`Problem adding item. Response status = ${response.status}`);
         }
-        redirect("/storage");
+        redirect("https://nicklaustrup-cs290-project.onrender.com/storage");
     };
 
 
