@@ -164,13 +164,11 @@ app.post('/contact', (req, res) => {
             console.log('Message sent: %s', info.messageId);
             // Preview only available when sending through an Ethereal account
             console.log('Preview URL: %s', getTestMessageUrl(info));
+            res.status(result).send(result === 200 ? { Success: 'Successsfully removed property.' } : { Error: 'Failed to send message - error thrown.' });
         });
     });
-    
-    res.status(result).send(result === 200 ? { Success: 'Successsfully removed property.' } : { Error: 'Failed to send message - error thrown.' });
+
 });
-
-
 
 
 
