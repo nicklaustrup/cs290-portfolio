@@ -5,7 +5,7 @@ import { TbSquarePlus } from "react-icons/tb";
 
 
 export const EditPropertyPageTable = ({ propertyToEdit }) => {
- 
+
     const [item, setItem]            = useState(propertyToEdit.item);
     const [quantity, setQuantity]    = useState(propertyToEdit.quantity);
     const [depositDate, setDate]     = useState(propertyToEdit.depositDate);
@@ -14,7 +14,7 @@ export const EditPropertyPageTable = ({ propertyToEdit }) => {
     const redirect = useNavigate();
 
     const editProperty = async () => {
-        const response = await fetch(`${process.env.HOST}/properties/${propertyToEdit._id}`, {
+        const response = await fetch(`${process.env.BACKEND}/properties/${propertyToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify({ 
                 item       : item, 

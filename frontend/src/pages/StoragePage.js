@@ -2,7 +2,6 @@ import { React, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import StorageList from '../components/StorageList';
-import { Link } from 'react-router-dom';
 
 function StoragePage({ setProperty }) {
     // Use the Navigate for redirection
@@ -13,7 +12,7 @@ function StoragePage({ setProperty }) {
 
     // RETRIEVE the entire list of properties
     const loadProperties = async () => {
-        const response = await fetch(`${process.env.HOST}/properties`);
+        const response = await fetch(`${process.env.BACKEND}/properties`);
         const properties = await response.json();
         setProperties(properties);
     } 
@@ -28,9 +27,9 @@ function StoragePage({ setProperty }) {
 
     // DELETE a single property 
     const onDeleteProperty = async _id => {
-        const response = await fetch(`${process.env.HOST}/properties/${_id}`, { method: 'DELETE' });
+        const response = await fetch(`${process.env.BACKEND}/properties/${_id}`, { method: 'DELETE' });
         if (response.status === 200) {
-            const getResponse = await fetch(`${process.env.HOST}/properties`);
+            const getResponse = await fetch(`${process.env.BACKEND}/properties`);
             const properties = await getResponse.json();
             setProperties(properties);
         } else {

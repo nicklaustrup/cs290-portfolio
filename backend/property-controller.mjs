@@ -8,11 +8,18 @@ import { createTestAccount, createTransport, getTestMessageUrl } from 'nodemaile
 
 const PORT = process.env.PORT;
 const app = express();
+const FRONTEND = process.env.FRONTEND
+const BACKEND = process.env.BACKEND
+const cors = require('cors');
+app.use(cors({
+    origin: `${FRONTEND}`,
+    optionsSuccessStatus: 200
+}));
 app.use(express.json());  // REST needs JSON MIME type.
 
 
 // CREATE controller ******************************************
-app.post('/properties', (req, res) => {
+app.post(`${BACKEND}/properties`, (req, res) => {
     properties.createProperty(
         req.body.item,
         req.body.quantity,
@@ -31,7 +38,7 @@ app.post('/properties', (req, res) => {
 
 
 // RETRIEVE controller ****************************************************
-app.get('/properties', (req, res) => {
+app.get(`${BACKEND}/properties`, (req, res) => {
     properties.retrieveProperties()
         .then(properties => {
             if (properties !== null) {
@@ -49,7 +56,7 @@ app.get('/properties', (req, res) => {
 
 
 // RETRIEVE by ID controller
-app.get('/properties/:_id', (req, res) => {
+app.get(`${BACKEND}/properties/:_id`, (req, res) => {
     properties.retrievePropertyByID(req.params._id)
         .then(property => {
             if (property !== null) {
@@ -68,7 +75,7 @@ app.get('/properties/:_id', (req, res) => {
 
 
 // UPDATE controller ************************************
-app.put('/properties/:_id', (req, res) => {
+app.put(`${BACKEND}/properties/:_id`, (req, res) => {
     properties.updateProperty(
         req.params._id,
         req.body.item,
@@ -88,7 +95,7 @@ app.put('/properties/:_id', (req, res) => {
 
 
 // DELETE Controller ******************************
-app.delete('/properties/:_id', (req, res) => {
+app.delete(`${BACKEND}/properties/:_id`, (req, res) => {
     properties.deletePropertyById(req.params._id)
         .then(deletedCount => {
             if (deletedCount === 1) {
@@ -107,7 +114,7 @@ app.delete('/properties/:_id', (req, res) => {
 
 // MAIL CONTROLLER -----------------------------|
 // Generate SMTP service account from ethereal.email
-app.post('/contact', (req, res) => {
+app.post(`${BACKEND}/contact`, (req, res) => {
     let name = req.body.name;
     let email = req.body.email;
     let source = req.body.source;

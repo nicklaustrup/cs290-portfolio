@@ -19,7 +19,7 @@ function ContactPage({ setContact }) {
 
   const sendMessage = async () => {
     const newMessage = { name, email, source, jobTitle, company, contactPref, connection, comment };
-    const response = await fetch(`${process.env.HOST}/contact`, {
+    const response = await fetch(`${process.env.BACKEND}/contact`, {
       method: 'post',
       body: JSON.stringify(newMessage),
       headers: {
