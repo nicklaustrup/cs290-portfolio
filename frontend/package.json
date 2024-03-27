@@ -2,7 +2,6 @@
   "name": "a8-laustrun-portfolio-frontend",
   "version": "2023",
   "private": true,
-  "proxy": "http://localhost:3000",
   "dependencies": {
     "@tabler/icons": "^3.1.0",
     "@testing-library/jest-dom": "^5.16.5",
