@@ -3,14 +3,14 @@
 import 'dotenv/config';
 import express from 'express';
 import * as properties from './property-model.mjs';
+import cors from 'cors';
 // Use at least Nodemailer v4.1.0
 import { createTestAccount, createTransport, getTestMessageUrl } from 'nodemailer';
 
 const PORT = process.env.PORT;
 const app = express();
-const FRONTEND = process.env.FRONTEND
-const BACKEND = process.env.BACKEND
-const cors = require('cors');
+const FRONTEND = process.env.FRONTEND;
+const BACKEND = process.env.BACKEND;
 app.use(cors({
     origin: `${FRONTEND}`,
     optionsSuccessStatus: 200
