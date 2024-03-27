@@ -14,7 +14,7 @@ export const EditPropertyPageTable = ({ propertyToEdit }) => {
     const redirect = useNavigate();
 
     const editProperty = async () => {
-        const response = await fetch(process.env.url + `/properties/${propertyToEdit._id}`, {
+        const response = await fetch(`${process.env.HOST}/properties/${propertyToEdit._id}`, {
             method: 'PUT',
             body: JSON.stringify({ 
                 item       : item, 
