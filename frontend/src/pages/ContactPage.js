@@ -18,8 +18,10 @@ function ContactPage({ setContact }) {
   const redirect = useNavigate();
 
   const sendMessage = async () => {
+    const backend = process.env.BACKEND;
+    console.log("Backend: " + backend);
     const newMessage = { name, email, source, jobTitle, company, contactPref, connection, comment };
-    const response = await fetch(`${process.env.BACKEND}/contact`, {
+    const response = await fetch(`${backend}/contact`, {
       method: 'post',
       body: JSON.stringify(newMessage),
       headers: {
