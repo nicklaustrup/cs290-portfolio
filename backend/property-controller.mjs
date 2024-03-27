@@ -39,6 +39,7 @@ app.post(`${BACKEND}/properties`, (req, res) => {
 
 // RETRIEVE controller ****************************************************
 app.get(`${BACKEND}/properties`, (req, res) => {
+    console.log('Backend URL:', BACKEND);
     properties.retrieveProperties()
         .then(properties => {
             if (properties !== null) {
