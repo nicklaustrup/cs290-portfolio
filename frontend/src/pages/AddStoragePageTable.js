@@ -15,7 +15,7 @@ export const AddStoragePageTable = () => {
 
     const addProperty = async () => {
         const newProperty = { item, quantity, depositDate, category };
-        const response = await fetch('/properties', {
+        const response = await fetch(process.env.url + '/properties', {
             method: 'post',
             body: JSON.stringify(newProperty),
             headers: {

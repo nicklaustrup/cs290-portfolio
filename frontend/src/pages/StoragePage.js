@@ -13,7 +13,7 @@ function StoragePage({ setProperty }) {
 
     // RETRIEVE the entire list of properties
     const loadProperties = async () => {
-        const response = await fetch('/properties');
+        const response = await fetch(process.env.url + '/properties');
         const properties = await response.json();
         setProperties(properties);
     } 
@@ -28,9 +28,9 @@ function StoragePage({ setProperty }) {
 
     // DELETE a single property 
     const onDeleteProperty = async _id => {
-        const response = await fetch(`/properties/${_id}`, { method: 'DELETE' });
+        const response = await fetch(process.env.url + `/properties/${_id}`, { method: 'DELETE' });
         if (response.status === 200) {
-            const getResponse = await fetch('/properties');
+            const getResponse = await fetch(process.env.url + '/properties');
             const properties = await getResponse.json();
             setProperties(properties);
         } else {

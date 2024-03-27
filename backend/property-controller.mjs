@@ -158,19 +158,6 @@ app.post('/contact', (req, res) => {
             console.log('Preview URL: %s', getTestMessageUrl(info));
         });
     });
-
-    res.send(`
-    <h3>Hi <strong>${name},</strong></h3>
-    <p>Thanks for reaching out for a <strong>${connection}</strong> call. I'm glad you were able to find me from <strong>${source}</strong> and want to meet. I will contact you via <strong>${contact}</strong> and if I can't reach you, I'll follow up at <strong>${email}</strong> after a few days.
-    I look forward to discussing the following agenda:
-    </p>
-    <p>
-    <strong>${comment}</strong>
-    </p>
-    <p>
-    Talk to you soon!
-    </p>
-    `);
 });
 
 
