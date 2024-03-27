@@ -1,0 +1,88 @@
+### CREATE five documents.
+POST http://localhost:3000/properties HTTP/1.1
+content-type: application/json
+
+{
+    "item": "Sweater",
+    "quantity": 4,
+    "depositDate": "2002-12-09",
+    "category": "Winter clothes"
+}
+
+
+### CREATE 2
+POST http://localhost:3000/properties HTTP/1.1
+content-type: application/json
+
+{
+    "item": "Jacket",
+    "quantity": 2,
+    "depositDate": "2024-03-1",
+    "category": "Winter clothes"
+}
+
+### CREATE 3
+POST http://localhost:3000/properties HTTP/1.1
+content-type: application/json
+
+{
+    "item": "Skis",
+    "quantity": 2,
+    "depositDate": "2024-03-02",
+    "category": "Winter Sports"
+}
+
+### CREATE 4
+POST http://localhost:3000/properties HTTP/1.1
+content-type: application/json
+
+{
+    "item": "Tent",
+    "quantity": 1,
+    "depositDate": "2023-10-14",
+    "category": "Camping"
+}
+
+### CREATE 5
+POST http://localhost:3000/properties HTTP/1.1
+content-type: application/json
+
+{
+    "item": "Kayak",
+    "quantity": 2,
+    "depositDate": "2023-10-14",
+    "category": "Camping"
+}
+
+
+### RETRIEVE all documents.
+GET http://localhost:3000/properties HTTP/1.1
+
+
+
+### RETRIEVE a document by its ID.
+### Replace the following ID with one that exists in the collection.
+GET http://localhost:3000/properties/65e50558cef8950e08d867cc HTTP/1.1
+
+
+### UPDATE one document's quantity, by ID.
+### Replace the ID in the following request with one that exists
+### and update the quantity:
+PUT http://localhost:3000/properties/65e50558cef8950e08d867cc HTTP/1.1
+content-type: application/json
+
+{
+  "item": "Skis",
+  "quantity": 4,
+  "depositDate": "2024-03-03",
+  "category": "Winter Sports"
+}
+
+### DELETE by ID (responds with nothing if successful):
+DELETE http://localhost:3000/properties/65e50558cef8950e08d867cc HTTP/1.1
+
+
+
+### RETRIEVE all documents (responds with 4 or the original 5):
+GET http://localhost:3000/properties HTTP/1.1
+
