@@ -17,7 +17,7 @@ app.use(express.json());  // REST needs JSON MIME type.
 
 
 // CREATE controller ******************************************
-app.post('https://nicklaustrup-cs290-portfolio.onrender.com/properties', (req, res) => {
+app.post('/properties', (req, res) => {
     properties.createProperty(
         req.body.item,
         req.body.quantity,
@@ -36,7 +36,7 @@ app.post('https://nicklaustrup-cs290-portfolio.onrender.com/properties', (req, r
 
 
 // RETRIEVE controller ****************************************************
-app.get('https://nicklaustrup-cs290-portfolio.onrender.com/properties', (req, res) => {
+app.get('/properties', (req, res) => {
     properties.retrieveProperties()
         .then(properties => {
             if (properties !== null) {
@@ -54,7 +54,7 @@ app.get('https://nicklaustrup-cs290-portfolio.onrender.com/properties', (req, re
 
 
 // RETRIEVE by ID controller
-app.get('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', (req, res) => {
+app.get('/properties/:_id', (req, res) => {
     properties.retrievePropertyByID(req.params._id)
         .then(property => {
             if (property !== null) {
@@ -73,7 +73,7 @@ app.get('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', (re
 
 
 // UPDATE controller ************************************
-app.put('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', (req, res) => {
+app.put('/properties/:_id', (req, res) => {
     properties.updateProperty(
         req.params._id,
         req.body.item,
@@ -93,7 +93,7 @@ app.put('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', (re
 
 
 // DELETE Controller ******************************
-app.delete('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', (req, res) => {
+app.delete('/properties/:_id', (req, res) => {
     properties.deletePropertyById(req.params._id)
         .then(deletedCount => {
             if (deletedCount === 1) {
@@ -112,7 +112,7 @@ app.delete('https://nicklaustrup-cs290-portfolio.onrender.com/properties/:_id', 
 
 // MAIL CONTROLLER -----------------------------|
 // Generate SMTP service account from ethereal.email
-app.post('https://nicklaustrup-cs290-portfolio.onrender.com/contact', (req, res) => {
+app.post('/contact', (req, res) => {
     let name = req.body.name;
     let email = req.body.email;
     let source = req.body.source;
